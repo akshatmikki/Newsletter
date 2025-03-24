@@ -18,7 +18,7 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <ul className="hidden lg:flex space-x-8 text-sm uppercase">
           <li>
-            <a href="#" className="hover:text-blue-400 transition">
+            <a href="/" className="hover:text-blue-400 transition">
               Home
             </a>
           </li>
