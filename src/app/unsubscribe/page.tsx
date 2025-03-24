@@ -1,9 +1,12 @@
-import { useRouter } from "next/router";
+"use client";
+
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Unsubscribe() {
   const router = useRouter();
-  const { token } = router.query;
+  const searchParams = useSearchParams();
+  const token = searchParams.get("token");
   const [message, setMessage] = useState<string>("");
 
   useEffect(() => {
@@ -23,8 +26,9 @@ export default function Unsubscribe() {
   }, [token]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <h1 className="text-xl font-bold">{message}</h1>
+    <div className="bg-white p-6 rounded-md shadow-md max-w-md mx-auto mt-10">
+      <h2 className="text-2xl font-bold mb-4">Unsubscribe to our newsletter</h2>
+      <h1 className="text-xl">{message}</h1>
     </div>
   );
 }
