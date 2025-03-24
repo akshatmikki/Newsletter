@@ -26,9 +26,9 @@ export default function Navbar() {
                         </Link>
                     </li>
                     <li>
-                        <div className="hover:text-blue-400 transition">
+                        <Link className="hover:text-blue-400 transition">
                             Articles
-                        </div>
+                        </Link>
                     </li>
                     {/* Categories Dropdown */}
                     <li className="relative">
@@ -41,27 +41,27 @@ export default function Navbar() {
                         {isDropdownOpen && (
                             <ul className="absolute left-0 mt-2 bg-gray-900 shadow-md rounded-md py-2 w-40">
                                 <li>
-                                    <div className="block px-4 py-2 hover:bg-gray-800">
+                                    <Link className="block px-4 py-2 hover:bg-gray-800">
                                         Category 1
-                                    </div>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <div className="block px-4 py-2 hover:bg-gray-800">
+                                    <Link className="block px-4 py-2 hover:bg-gray-800">
                                         Category 2
-                                    </div>
+                                    </Link>
                                 </li>
                             </ul>
                         )}
                     </li>
                     <li>
-                        <div className="hover:text-blue-400 transition">
+                        <Link className="hover:text-blue-400 transition">
                             About Us
-                        </div>
+                        </Link>
                     </li>
                     <li>
-                        <div className="hover:text-blue-400 transition">
+                        <Link className="hover:text-blue-400 transition">
                             Contact Us
-                        </div>
+                        </Link>
                     </li>
                 </ul>
 
@@ -92,9 +92,9 @@ export default function Navbar() {
                         {["Home", "Articles", "About Us", "Contact Us"].map(
                             (item, index) => (
                                 <li key={index} className="flex items-center gap-2">
-                                    <div className="hover:text-blue-400 transition">
+                                    <Link className="hover:text-blue-400 transition">
                                         {item}
-                                    </div>
+                                    </Link>
                                     <ArrowRight size={20} />
                                 </li>
                             )
