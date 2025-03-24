@@ -77,41 +77,41 @@ export default function Navbar() {
                     {/* Mobile Menu Items */}
                     <ul className="space-y-6 text-xl font-semibold text-center">
                         <li>
-                            <Link href="/" onClick={() => setIsOpen(false)}>
+                            <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2">
                                 <div className="hover:text-blue-400 transition">Home</div>
+                                <ArrowRight size={20} />
                             </Link>
                         </li>
-                        <li>
+                        <li className="flex items-center gap-2">
                             <div className="hover:text-blue-400 transition">Articles</div>
+                            <ArrowRight size={20} />
                         </li>
                         {/* Categories Dropdown in Mobile */}
-                        <li>
+                        <li className="flex flex-col items-center gap-2">
                             <button
                                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                className="flex items-center mx-auto hover:text-blue-400 transition"
+                                className="flex items-center gap-2 hover:text-blue-400 transition"
                             >
                                 Categories <ChevronDown size={18} />
                             </button>
                             {isDropdownOpen && (
                                 <ul className="bg-gray-900 shadow-md rounded-md py-2 w-40 mx-auto mt-2">
                                     <li>
-                                        <div className="block px-4 py-2 hover:bg-gray-800">
-                                            Category 1
-                                        </div>
+                                        <div className="block px-4 py-2 hover:bg-gray-800">Category 1</div>
                                     </li>
                                     <li>
-                                        <div className="block px-4 py-2 hover:bg-gray-800">
-                                            Category 2
-                                        </div>
+                                        <div className="block px-4 py-2 hover:bg-gray-800">Category 2</div>
                                     </li>
                                 </ul>
                             )}
                         </li>
-                        <li>
+                        <li className="flex items-center gap-2">
                             <div className="hover:text-blue-400 transition">About Us</div>
+                            <ArrowRight size={20} />
                         </li>
-                        <li>
+                        <li className="flex items-center gap-2">
                             <div className="hover:text-blue-400 transition">Contact Us</div>
+                            <ArrowRight size={20} />
                         </li>
                     </ul>
                 </div>
