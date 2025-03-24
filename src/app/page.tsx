@@ -1,6 +1,7 @@
+import Subscribe from "./subscribe/page";
 
 export default function Home() {
   return (
-    <div> hello</div>
+    <Subscribe />
   );
 }
