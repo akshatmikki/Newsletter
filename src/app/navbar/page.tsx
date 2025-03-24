@@ -3,7 +3,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { X, Menu, ChevronDown, ArrowRight } from "lucide-react";
 
-
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -19,16 +18,12 @@ export default function Navbar() {
                 {/* Desktop Menu */}
                 <ul className="hidden lg:flex space-x-8 text-sm uppercase">
                     <li>
-                        <Link href="/">
-                            <div className="hover:text-blue-400 transition">
-                                Home
-                            </div>
+                        <Link href="/" className="hover:text-blue-400 transition">
+                            Home
                         </Link>
                     </li>
                     <li>
-                        <Link className="hover:text-blue-400 transition">
-                            Articles
-                        </Link>
+                        <div className="hover:text-blue-400 transition">Articles</div>
                     </li>
                     {/* Categories Dropdown */}
                     <li className="relative">
@@ -41,27 +36,19 @@ export default function Navbar() {
                         {isDropdownOpen && (
                             <ul className="absolute left-0 mt-2 bg-gray-900 shadow-md rounded-md py-2 w-40">
                                 <li>
-                                    <Link className="block px-4 py-2 hover:bg-gray-800">
-                                        Category 1
-                                    </Link>
+                                    <div className="block px-4 py-2 hover:bg-gray-800">Category 1</div>
                                 </li>
                                 <li>
-                                    <Link className="block px-4 py-2 hover:bg-gray-800">
-                                        Category 2
-                                    </Link>
+                                    <div className="block px-4 py-2 hover:bg-gray-800">Category 2</div>
                                 </li>
                             </ul>
                         )}
                     </li>
                     <li>
-                        <Link className="hover:text-blue-400 transition">
-                            About Us
-                        </Link>
+                        <div className="hover:text-blue-400 transition">About Us</div>
                     </li>
                     <li>
-                        <Link className="hover:text-blue-400 transition">
-                            Contact Us
-                        </Link>
+                        <div className="hover:text-blue-400 transition">Contact Us</div>
                     </li>
                 </ul>
 
@@ -89,16 +76,43 @@ export default function Navbar() {
 
                     {/* Mobile Menu Items */}
                     <ul className="space-y-6 text-xl font-semibold text-center">
-                        {["Home", "Articles", "About Us", "Contact Us"].map(
-                            (item, index) => (
-                                <li key={index} className="flex items-center gap-2">
-                                    <Link className="hover:text-blue-400 transition">
-                                        {item}
-                                    </Link>
-                                    <ArrowRight size={20} />
-                                </li>
-                            )
-                        )}
+                        <li>
+                            <Link href="/" onClick={() => setIsOpen(false)}>
+                                <div className="hover:text-blue-400 transition">Home</div>
+                            </Link>
+                        </li>
+                        <li>
+                            <div className="hover:text-blue-400 transition">Articles</div>
+                        </li>
+                        {/* Categories Dropdown in Mobile */}
+                        <li>
+                            <button
+                                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                                className="flex items-center mx-auto hover:text-blue-400 transition"
+                            >
+                                Categories <ChevronDown size={18} />
+                            </button>
+                            {isDropdownOpen && (
+                                <ul className="bg-gray-900 shadow-md rounded-md py-2 w-40 mx-auto mt-2">
+                                    <li>
+                                        <div className="block px-4 py-2 hover:bg-gray-800">
+                                            Category 1
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div className="block px-4 py-2 hover:bg-gray-800">
+                                            Category 2
+                                        </div>
+                                    </li>
+                                </ul>
+                            )}
+                        </li>
+                        <li>
+                            <div className="hover:text-blue-400 transition">About Us</div>
+                        </li>
+                        <li>
+                            <div className="hover:text-blue-400 transition">Contact Us</div>
+                        </li>
                     </ul>
                 </div>
             )}
