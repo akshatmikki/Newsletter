@@ -1,33 +1,40 @@
-"use client";
+"use client"; // Ensure this is a client component
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
-export default function Unsubscribe() {
+export default function UnsubscribePage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Unsubscribe />
+    </Suspense>
+  );
+}
+
+function Unsubscribe() {
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
-  const [message, setMessage] = useState<string>("");
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
-    if (!token || typeof token !== "string") {
+    if (token) {
+      fetch("https://xgbfuvduzaljhyepdmyk.supabase.co/functions/v1/newsletter_unsubscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ unsubscribe_token: token }),
+      })
+        .then((res) => res.json())
+        .then((data) => setMessage(data.message || "Unsubscribed successfully."))
+        .catch(() => setMessage("Error while unsubscribing."));
+    } else {
       setMessage("Token Query Parameter not provided.");
-      return;
     }
-
-    fetch("https://xgbfuvduzaljhyepdmyk.supabase.co/functions/v1/newsletter_unsubscribe", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ unsubscribe_token: token }),
-    })
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message || "Unsubscribed successfully!"))
-      .catch(() => setMessage("An error occurred."));
   }, [token]);
 
   return (
-    <div className="bg-white p-6 rounded-md shadow-md max-w-md mx-auto mt-10">
-      <h2 className="text-2xl font-bold mb-4">Unsubscribe to our newsletter</h2>
-      <h1 className="text-xl">{message}</h1>
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <h1 className="text-2xl font-bold">Unsubscribe</h1>
+      <p>{message}</p>
     </div>
   );
 }
